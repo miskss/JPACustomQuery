@@ -20,6 +20,7 @@ public interface TestEntityRepository extends JpaRepository<TestEntity, Long> {
             " e.nick_name as nick," +
             " e.age as age," +
             " e.gender as sex," +
+            " e.enable as enable," +
             " e.create_time as time" +
             " from test_entity e ", countQuery = "select count(*) from test_entity ", nativeQuery = true)
     Page<CustomQuery> getPage(Pageable pageable);

@@ -26,17 +26,21 @@ public class TestEntity {
 
     private Integer age;
 
+    private Boolean enable;
+
     @Convert(converter = InstantConverter.class)
     private Instant createTime;
 
 
-    public TestEntity(String username, String nickName, String gender, Integer age) {
+    public TestEntity(String username, String nickName, String gender, Integer age,boolean enable) {
         this.username = username;
         this.nickName = nickName;
         this.gender = gender;
         this.age = age;
         this.createTime = Instant.now();
+        this.enable = enable;
     }
+
 }
 
 

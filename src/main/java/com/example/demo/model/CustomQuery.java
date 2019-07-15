@@ -19,12 +19,15 @@ public interface CustomQuery {
 
     Instant getTime();
 
+    Boolean getEnable();
+
     default String getString(){
         return "getId=" + getId()+";" +
                 "getName=" + getName() +
                 "; getNick=" + getNick()+
                 "; getSex=" + getSex()+
                 ";getAge= " + getAge() +
-                ";getTime=" + getTime();
+                ";getTime=" + getTime() +
+                ";getEnable = "+ getEnable();
     }
 }

@@ -30,26 +30,29 @@ public class TestEntityRepositoryTest {
 
         testEntities = new ArrayList<>();
 
-        testEntities.add(new TestEntity("i","系","男",20));
-        testEntities.add(new TestEntity("ii","细","女",21));
-        testEntities.add(new TestEntity("iii","系","男",22));
-        testEntities.add(new TestEntity("iiii","系","女",23));
-        testEntities.add(new TestEntity("iiiii","系","女",24));
-        testEntities.add(new TestEntity("iiiiii","系","男",25));
+        testEntities.add(new TestEntity("i","系","男",20,true));
+        testEntities.add(new TestEntity("ii","细","女",21,false));
+        testEntities.add(new TestEntity("iii","系","男",22,true));
+        testEntities.add(new TestEntity("iiii","系","女",23,true));
+        testEntities.add(new TestEntity("iiiii","系","女",24,false));
+        testEntities.add(new TestEntity("iiiiii","系","男",25,false));
         testEntityRepository.saveAll(testEntities);
 
     }
 
     @Test
     public void getPageTest(){
-        PageRequest pageRequest = PageRequest.of(0, 2, Sort.Direction.DESC, "create_time");
+        PageRequest pageRequest = PageRequest.of(0, 6, Sort.Direction.DESC, "create_time");
         Page<CustomQuery> page = testEntityRepository.getPage(pageRequest);
 
-        assertEquals(3,page.getTotalPages());
+        assertEquals(1,page.getTotalPages());
 
         assertEquals(6,page.getTotalElements());
 
         page.get().map(CustomQuery::getString).forEach(System.out::println);
+
+
+
     }
 
 }
